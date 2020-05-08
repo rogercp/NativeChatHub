@@ -21,7 +21,6 @@ const HomeScreen = (props) => {
       />
    </View>
    
-
    </View>
 </ImageBackground>
 
@@ -29,7 +28,7 @@ const HomeScreen = (props) => {
 };
 
 const styles = StyleSheet.create({
-  buttonBox:{
+buttonBox:{
   marginBottom: 10,
   width: "40%",
   borderRadius: 6,
