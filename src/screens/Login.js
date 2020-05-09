@@ -1,6 +1,8 @@
 import React,{useState,useEffect} from "react";
 import { Text, StyleSheet, View, Button, TouchableOpacity,TextInput } from "react-native";
 import {AsyncStorage} from 'react-native';
+import { StatusBar } from 'react-native';
+
 import axios from 'axios';
 
 
@@ -14,10 +16,9 @@ const Login = (props) => {
         
         })
 
-    //    useEffect(() => {
-       
-    //     console.log(fetch('http://192.168.68.103.:8000/user/init'))
-    //    }, [])
+       useEffect(() => {
+        StatusBar.setHidden(true);
+       }, [])
 
        
        

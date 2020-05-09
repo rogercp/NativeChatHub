@@ -22,34 +22,29 @@ const Settings = (props) => {
            console.log("hitting")
         AsyncStorage.getItem('token', (error, result) => {
             if(result !== null){
-                console.log("hitting",result)
+                console.log("token in settings",result)
             }
     })
         AsyncStorage.removeItem('token');
         props.navigation.navigate('Home')
-
-        AsyncStorage.getItem('token', (error, result) => {
-            if(result !== null){
-                console.log("hitting",result)
-            }
-    })
+        
         
        }
 
   return (
 <>
-<View style={{marginLeft:'auto'}}>
-<Icon
-   
-        raised
-        name='sign-out'
-        type='font-awesome'
-        color='#003d99'
-        onPress={() => logout}/>
-</View>
-   
+{/* <View style={{marginLeft:'auto'}}>
+
+</View> */}
    <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
    
+   <Icon
+   
+   raised
+   name='sign-out'
+   type='font-awesome'
+   color='#003d99'
+   onPress={logout}/>
 
    
        
