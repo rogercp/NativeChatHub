@@ -4,7 +4,8 @@ import AxiosWithAuth from '../helpers/AxiosWithAuth'
 import Axios from "axios";
 import NavBar from '../components/NavBar'
 
-const UserHome = (props) => {
+
+const Search = (props) => {
 
 
    useEffect(() => {
@@ -18,8 +19,9 @@ const UserHome = (props) => {
   return (
 
    <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
-   <Text>Hello is anyone there</Text>
+   <Text>Search</Text>
    <NavBar navigate={props.navigation.navigate}   props={props}/>
+
    </View>
 
 
@@ -40,4 +42,4 @@ buttonBox:{
   }
 });
 
-export default UserHome;
+export default Search;
