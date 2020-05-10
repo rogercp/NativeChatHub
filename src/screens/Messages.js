@@ -1,27 +1,40 @@
-import React, {useEffect} from "react";
-import { Text, StyleSheet,Button,View,Image,ImageBackground} from "react-native";
+import React, {useEffect,useState} from "react";
+import { Text, StyleSheet,Button,View,ScrollView,ImageBackground} from "react-native";
 import AxiosWithAuth from '../helpers/AxiosWithAuth'
 import Axios from "axios";
 import NavBar from '../components/NavBar'
+import { GiftedChat } from 'react-native-gifted-chat'
 
 
 const Messages = (props) => {
 
 
    useEffect(() => {
-    // const token = AsyncStorage.getItem("token")
-    // console.log(token,"token")
+    
     
     console.log(AxiosWithAuth(),"axios")
 
        }, [])
 
+
+     
+
   return (
 
-   <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
+   <ScrollView contentContainerStyle={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
    <Text>Messages</Text>
-   <NavBar navigate={props.navigation.navigate}   props={props}/>
-   </View>
+   <Button
+    style={styles.button}
+     onPress={() => props.navigation.navigate('WriteMessage')}
+        title="click to open messageer"
+      />
+ <NavBar  navigate={props.navigation.navigate}   props={props}/>
+ 
+
+</ScrollView>
+
+
+    
 
 
   )

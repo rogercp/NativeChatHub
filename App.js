@@ -7,6 +7,7 @@ import UserHome from "./src/screens/UserHome";
 import Settings from './src/screens/Settings'
 import Messages from './src/screens/Messages'
 import Search from './src/screens/Search'
+import WriteMessage from './src/screens/WriteMessage'
 
 
 const navigator = createStackNavigator(
@@ -31,6 +32,9 @@ const navigator = createStackNavigator(
     },
     Search:{
       screen:Search
+    },
+    WriteMessage:{
+      screen:WriteMessage
     }
   },
   {

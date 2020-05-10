@@ -1,13 +1,14 @@
 import React,{useState,useEffect} from "react";
-import { Text, StyleSheet, View, Button, TouchableOpacity,TextInput } from "react-native";
+import { Text, StyleSheet, ScrollView, View,Button, TouchableOpacity,TextInput } from "react-native";
 import {AsyncStorage} from 'react-native';
 import axios from 'axios';
-
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 const Register = (props) => {
+    
 const [userInfo,setUserInfo] = useState({
 
-// email:'',
+email:'',
 username:'',
 password1:'',
 password2:''
@@ -73,11 +74,15 @@ fetch('http://192.168.68.103:8000/user/registration', {
     
 
     return (
+        <>
+    <KeyboardAwareScrollView contentContainerStyle={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center',backgroundColor:"lightgrey"}}>
       <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center',backgroundColor:"lightgrey"}}>
 
         <Text style={{fontSize:30}}>Register</Text>
-        {/* <TextInput 
+        <TextInput 
+        keyboardAppearance="dark"
         name = 'email'
+        returnKeyType='next'
         placeholder='email'
         autoCapitalize = "none"
         autoCorrect= {false}
@@ -85,9 +90,11 @@ fetch('http://192.168.68.103:8000/user/registration', {
         value={userInfo.email}
         onChangeText={(newValue)=>setUserInfo({...userInfo,email:newValue})}
         />
-        <Text> {userInfo.email}</Text> */}
+        <Text> {userInfo.email}</Text>
 
-        <TextInput 
+        <TextInput
+                        keyboardAppearance="dark"
+ 
         name = 'username'
         placeholder='username'
         autoCapitalize = "none"
@@ -99,6 +106,7 @@ fetch('http://192.168.68.103:8000/user/registration', {
         <Text> {userInfo.username}</Text>
 
         <TextInput 
+        keyboardAppearance="dark"
         name = 'password1'
         placeholder='password'
         autoCapitalize = "none"
@@ -110,6 +118,7 @@ fetch('http://192.168.68.103:8000/user/registration', {
         <Text> {userInfo.password1}</Text>
 
         <TextInput 
+        keyboardAppearance="dark"
         name = 'password2'
         placeholder='validate password'
         autoCapitalize = "none"
@@ -121,15 +130,17 @@ fetch('http://192.168.68.103:8000/user/registration', {
         <Text> {userInfo.password2}</Text>
 
         <View style={styles.buttonBox}>
-        <Button
-            onPress={register}
-            style={styles.button}
-                
-                title="Enter"
-            />
-        </View>
+       <Button
+           onPress={register}
+           style={styles.button}
+               
+               title="Enter"
+           />
+       </View>
         
       </View>
+       </KeyboardAwareScrollView>
+       </>
       
     )
   };

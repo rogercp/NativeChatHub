@@ -2,6 +2,7 @@ import React,{useState,useEffect} from "react";
 import { Text, StyleSheet, View, Button, TouchableOpacity,TextInput } from "react-native";
 import {AsyncStorage} from 'react-native';
 import { StatusBar } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 import axios from 'axios';
 
@@ -48,10 +49,13 @@ const Login = (props) => {
 
         
             return (
-              <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center',backgroundColor:"lightgrey"}}>
+                <KeyboardAwareScrollView contentContainerStyle={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center',backgroundColor:"lightgrey"}}>
+                <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center',backgroundColor:"lightgrey"}}>
+          
         
                 <Text style={{fontSize:30}}>Login</Text>
-        
+                {/* keyboardAppearance="dark" */}
+
                 {/* <TextInput 
                 name = 'email'
                 placeholder='email'
@@ -64,6 +68,7 @@ const Login = (props) => {
                 <Text> {userInfo.email}</Text>
          */}
                 <TextInput 
+               keyboardAppearance="dark"
                 name = 'username'
                 placeholder='username'
                 autoCapitalize = "none"
@@ -75,6 +80,7 @@ const Login = (props) => {
                 <Text> {userInfo.username}</Text>
         
                 <TextInput 
+                keyboardAppearance="dark"
                 name = 'password'
                 placeholder='password'
                 autoCapitalize = "none"
@@ -95,6 +101,7 @@ const Login = (props) => {
                 </View>
                 
               </View>
+              </KeyboardAwareScrollView>
               
             )
           };

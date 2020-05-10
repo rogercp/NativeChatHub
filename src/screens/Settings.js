@@ -19,16 +19,8 @@ const Settings = (props) => {
        }, [])
 
        const logout = () =>{
-           console.log("hitting")
-        AsyncStorage.getItem('token', (error, result) => {
-            if(result !== null){
-                console.log("token in settings",result)
-            }
-    })
         AsyncStorage.removeItem('token');
-        props.navigation.navigate('Home')
-        
-        
+        props.navigation.navigate('Home');
        }
 
   return (

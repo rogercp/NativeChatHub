@@ -1,8 +1,9 @@
-import React, {useEffect} from "react";
+import React, {useEffect,useState} from "react";
 import { Text, StyleSheet,Button,View,Image,ImageBackground} from "react-native";
 import AxiosWithAuth from '../helpers/AxiosWithAuth'
 import Axios from "axios";
 import NavBar from '../components/NavBar'
+
 
 const UserHome = (props) => {
 
@@ -12,17 +13,25 @@ const UserHome = (props) => {
     // console.log(token,"token")
     
     console.log(AxiosWithAuth(),"axios")
+    
+
+
+
 
        }, [])
 
+      
+
   return (
+<>
 
    <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
    <Text>Hello is anyone there</Text>
+   
    <NavBar navigate={props.navigation.navigate}   props={props}/>
    </View>
 
-
+</>
   )
 };
 
