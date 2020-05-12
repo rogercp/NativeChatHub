@@ -1,7 +1,15 @@
-import React from "react";
+import React,{useSatte} from "react";
 import { Text, StyleSheet,Button,View,Image,ImageBackground} from "react-native";
 
 const HomeScreen = (props) => {
+
+
+
+
+
+
+
+
   return (
   
 <ImageBackground source={require('../../assets/cogs.jpg')} style={{width: '100%', height: '100%'}}>

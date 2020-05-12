@@ -1,8 +1,10 @@
 import React,{useState,useEffect} from "react";
 import { Text, StyleSheet, View, Button, TouchableOpacity,TextInput } from "react-native";
-import {AsyncStorage} from 'react-native';
+import {AsyncStorage} from "react-native";
 import { StatusBar } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { Input } from 'react-native-elements';
+// import deviceStorage from '../helpers/deviceStorage'
 
 import axios from 'axios';
 
@@ -24,36 +26,84 @@ const Login = (props) => {
        
        
 
-       const login = () =>{
+    //    const login = () =>{
+    //     axios
+    //     .post('http://192.168.68.103:8000/user/login/',userInfo)
+    //     .then(res => {
+
+    //     AsyncStorage.setItem('token', res.data.key);
+        
+    //     }).then(
+    //         AsyncStorage.getItem('token', (error, result) => {
+    //             if(result !== null){
+    //                 console.log("hitting",result)
+    //                 props.navigation.navigate('UserHome')
+    //             }
+    //     })
+    //     )
+    //     .catch(err => {
+          
+    //         console.log(err)
+    //     });
+    
+    
+    // }
+
+
+
+
+    const login = () =>{
         axios
         .post('http://192.168.68.103:8000/user/login/',userInfo)
         .then(res => {
-
-        AsyncStorage.setItem('token', res.data.key);
-        
-        }).then(
-            AsyncStorage.getItem('token', (error, result) => {
-                if(result !== null){
-                    console.log("hitting",result)
-                    props.navigation.navigate('UserHome')
+            
+            // stringifiedToken = JSON.stringify(res.data.key)
+            
+                setValue = async () => {
+                    try {
+                    await AsyncStorage.setItem('token', `${res.data.key}`)
+                    } catch (e) {
+                        console.log(e,"error")
+                    // saving error
+                    }
                 }
+                setValue()
+
+                getMyValue = async () => {
+                    console.log("hitting")
+
+                    try {
+                    const value = await AsyncStorage.getItem('token')
+                      console.log(value,"sdfsfsdfsdfsdfsdfsdfsdf")
+                      if(value !== null) {
+                        props.navigation.navigate('UserHome')
+                    }
+                    } catch(e) {
+                      // error reading value
+                    }
+                  }
+                  getMyValue()
+                            
+             
         })
-        )
+        
+    
         .catch(err => {
           
             console.log(err)
         });
     
-    
+        console.log("done")
     }
+
+
+
+
 
         
             return (
                 <KeyboardAwareScrollView contentContainerStyle={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center',backgroundColor:"lightgrey"}}>
-                <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center',backgroundColor:"lightgrey"}}>
-          
-        
-                <Text style={{fontSize:30}}>Login</Text>
+      <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center',backgroundColor:"lightgrey"}}>
                 {/* keyboardAppearance="dark" */}
 
                 {/* <TextInput 
@@ -62,12 +112,9 @@ const Login = (props) => {
                 autoCapitalize = "none"
                 autoCorrect= {false}
                 style={styles.input} 
-                value={userInfo.email}
-                onChangeText={(newValue)=>setUserInfo({...userInfo,email:newValue})}
-                />
-                <Text> {userInfo.email}</Text>
+                value= {userInfo.email}</Text>
          */}
-                <TextInput 
+                <Input 
                keyboardAppearance="dark"
                 name = 'username'
                 placeholder='username'
@@ -79,7 +126,7 @@ const Login = (props) => {
                 />
                 <Text> {userInfo.username}</Text>
         
-                <TextInput 
+                <Input 
                 keyboardAppearance="dark"
                 name = 'password'
                 placeholder='password'

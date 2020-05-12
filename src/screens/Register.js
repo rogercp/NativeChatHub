@@ -1,8 +1,10 @@
 import React,{useState,useEffect} from "react";
 import { Text, StyleSheet, ScrollView, View,Button, TouchableOpacity,TextInput } from "react-native";
-import {AsyncStorage} from 'react-native';
+// import {AsyncStorage} from 'react-native';
 import axios from 'axios';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { Input } from 'react-native-elements';
+
 
 const Register = (props) => {
     
@@ -79,7 +81,7 @@ fetch('http://192.168.68.103:8000/user/registration', {
       <View style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center',backgroundColor:"lightgrey"}}>
 
         <Text style={{fontSize:30}}>Register</Text>
-        <TextInput 
+        <Input 
         keyboardAppearance="dark"
         name = 'email'
         returnKeyType='next'
@@ -92,7 +94,7 @@ fetch('http://192.168.68.103:8000/user/registration', {
         />
         <Text> {userInfo.email}</Text>
 
-        <TextInput
+        <Input
                         keyboardAppearance="dark"
  
         name = 'username'
@@ -105,7 +107,7 @@ fetch('http://192.168.68.103:8000/user/registration', {
         />
         <Text> {userInfo.username}</Text>
 
-        <TextInput 
+        <Input 
         keyboardAppearance="dark"
         name = 'password1'
         placeholder='password'
@@ -117,7 +119,7 @@ fetch('http://192.168.68.103:8000/user/registration', {
         />
         <Text> {userInfo.password1}</Text>
 
-        <TextInput 
+        <Input 
         keyboardAppearance="dark"
         name = 'password2'
         placeholder='validate password'

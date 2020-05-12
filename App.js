@@ -8,7 +8,7 @@ import Settings from './src/screens/Settings'
 import Messages from './src/screens/Messages'
 import Search from './src/screens/Search'
 import WriteMessage from './src/screens/WriteMessage'
-
+import AxiosWithAuth from './src/helpers/AxiosWithAuth'
 
 const navigator = createStackNavigator(
   {
@@ -35,6 +35,9 @@ const navigator = createStackNavigator(
     },
     WriteMessage:{
       screen:WriteMessage
+    },
+    AxiosWithAuth:{
+      screen:AxiosWithAuth
     }
   },
   {

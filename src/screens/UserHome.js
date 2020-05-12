@@ -3,24 +3,42 @@ import { Text, StyleSheet,Button,View,Image,ImageBackground} from "react-native"
 import AxiosWithAuth from '../helpers/AxiosWithAuth'
 import Axios from "axios";
 import NavBar from '../components/NavBar'
+// import {AsyncStorage} from 'react-native';
 
 
 const UserHome = (props) => {
 
+    const [userInfo,setUserInfo]= useState({
+
+
+    })
+
 
    useEffect(() => {
-    // const token = AsyncStorage.getItem("token")
-    // console.log(token,"token")
-    
-    console.log(AxiosWithAuth(),"axios")
-    
-
-
-
+    initUser()    
 
        }, [])
 
+       
+
+        // const value =  AsyncStorage.getItem('token');
+        // console.log(value)
       
+        const initUser = ()=>{
+            
+            AxiosWithAuth()
+            .get('http://192.168.68.103:8000/user/init/')
+            .then(res => {
+                console.log(res.data)
+                
+                })
+                .catch(err => {
+                
+                    console.log(err)
+                });
+            
+            
+        }
 
   return (
 <>
