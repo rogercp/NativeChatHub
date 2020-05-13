@@ -57,24 +57,20 @@ const Login = (props) => {
         .post('http://192.168.68.103:8000/user/login/',userInfo)
         .then(res => {
             
-            // stringifiedToken = JSON.stringify(res.data.key)
             
                 setValue = async () => {
                     try {
                     await AsyncStorage.setItem('token', `${res.data.key}`)
                     } catch (e) {
-                        console.log(e,"error")
                     // saving error
                     }
                 }
                 setValue()
 
                 getMyValue = async () => {
-                    console.log("hitting")
 
                     try {
                     const value = await AsyncStorage.getItem('token')
-                      console.log(value,"sdfsfsdfsdfsdfsdfsdfsdf")
                       if(value !== null) {
                         props.navigation.navigate('UserHome')
                     }
@@ -93,7 +89,6 @@ const Login = (props) => {
             console.log(err)
         });
     
-        console.log("done")
     }
 
 
