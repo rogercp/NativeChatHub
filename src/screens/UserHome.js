@@ -1,6 +1,6 @@
 import React, {useEffect,useState} from "react";
 import { Text, StyleSheet,Button,View,Image,ImageBackground} from "react-native";
-// import {axiosWithAuth} from '../helpers/AxiosWithAuth'
+import AxiosWithAuth from '../helpers/AxiosWithAuth'
 import axios from "axios";
 import NavBar from '../components/NavBar'
 // import {AsyncStorage} from 'react-native';
@@ -16,47 +16,16 @@ const UserHome = (props) => {
 
 
    useEffect(() => {
-    // initUser()  
-    axiosWithAuth()
+    initUser()  
+    // axiosWithAuth()
        }, [])
 
        
-
-        // const value =  AsyncStorage.getItem('token');
-        // console.log(value)
-
-        // async function  axiosWithAuth ()  {
-
-
     
-        //     const value =  await AsyncStorage.getItem('token')
-                 
-        //       return  axios.create({
-        //         headers: {
-        //           'Content-Type': 'application/json',
-        //            Authorization: `Token ${value}`
-        //         }
-        //       })
-        
-              
-        
-        // }
-
-        axiosWithAuth = async () => {
-            try {
-              const value = await AsyncStorage.getItem('token')
-
-              if(value !== null) {
-
-                axios.get('http://192.168.68.103:8000/user/init/',
-            {
-                headers: {
-                  'Content-Type': 'application/json',
-                   Authorization: `Token ${value}`
-                }
-              })
-
-              .then(res => {
+       
+        const initUser = ()=>{
+            AxiosWithAuth().get('http://192.168.68.103:8000/user/init/')
+            .then(res => {
                 console.log('init', res)
                 console.log(res.data)
                 
@@ -65,70 +34,11 @@ const UserHome = (props) => {
                 
                     console.log(err)
                 });
-
-              }
-            
-            } catch(e) {
-              // read error
-            }
-          
-            console.log('Done.')
-          
-          }
-      
-        // const initUser = ()=>{
-            
-        //     axiosWithAuth().get('http://192.168.68.103:8000/user/init/')
-        //     .then(res => {
-        //         console.log('init', res)
-        //         console.log(res.data)
-                
-        //         })
-        //         .catch(err => {
-                
-        //             console.log(err)
-        //         });
             
             
-        // }
+        }
 
-        //    const initUser = async()=>{
-        //     getMyValue = async () => {
-        //         try {
-        //           const value = await AsyncStorage.getItem('token')
-        //           console.log(value,"valuye in axios")
-        //           axios.get('http://192.168.68.103:8000/user/init/',{
-
-        //             headers: {
-        //                 'Content-Type': 'application/json',
-        //                  Authorization: `Token ${value}`
-        //               }
-
-        //           })
-        //           .then(res => {
-
-        //               console.log(res.data)
-                      
-        //               })
-        //               .catch(err => {
-                      
-        //                   console.log(err)
-        //               });
-        //         } catch(e) {
-        //           // read error
-        //         }
-              
-        //         console.log('Done.')
-              
-        //       }
-
-
-           
-            
-            
-        // }
-
-
+       
 
   return (
 <>

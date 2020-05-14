@@ -7,21 +7,35 @@ axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 
 
-
-export default async function  axiosWithAuth ()  {
+export default function  AxiosWithAuth()  {
 
 
     
-    const value =  await AsyncStorage.getItem('token')
-         
-      return  axios.create({
-        headers: {
-          'Content-Type': 'application/json',
-           Authorization: `Token ${value}`
-        }
-      })
 
-      
+    return AsyncStorage.getItem('token', (errToken, value) => {
+        let token = null;
+    
 
+        token = value
+        console.log(token ,"topkem before the ,then")
+       return axios.create({
+                    headers: {
+
+                      'Content-Type': 'application/json',
+                       Authorization: `Token ${token}`
+                 }
+        })
+        .then((response)=> {
+
+            console.log(response,"respose for getItem")
+            return Promise.resolve(response)
+        })
+        .catch(error=>{
+
+            console.log(error)
+        })
+
+    
+})
 }
 

@@ -72,6 +72,7 @@ const Login = (props) => {
                     try {
                     const value = await AsyncStorage.getItem('token')
                       if(value !== null) {
+                          console.log(value,"value in login")
                         props.navigation.navigate('UserHome')
                     }
                     } catch(e) {
